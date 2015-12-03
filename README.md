@@ -1,2 +1,2 @@
 # Start
-The first repository
+Open GettingStarted.txt
