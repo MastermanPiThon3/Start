@@ -1,0 +1,31 @@
+Goals for today:
+ - Turning on the Pi
+ - Opening the Terminal
+ - Download some Python
+ - Open the development enviornment
+
+
+
+Download some Pyton
+
+Create a place for the code
+1. Create a folder by entering 'mkdir code' (you can type 'ls' to see the folder you created)
+2. Enter the 'code' folder by entering 'cd code'
+
+Case MaTtErS
+
+Download the code into the 'code' directory
+1. Enter ‘git clone https://github.com/MastermanPiThon3/Start'
+2. Wait until complete
+3. See what you just downloaded by entering 'ls'
+
+Run some Pyton
+1. Enter 'idle HelloPiThon.py &'
+2. Run by clicking the 'Run' menu then 'Run Module'
+
+
+
+
+ - Sign up for Github account
+Signing up to Github
+Go to github.com and sign up.
