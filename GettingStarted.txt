@@ -19,13 +19,10 @@ Download the code into the 'code' directory
 2. Wait until complete
 3. See what you just downloaded by entering 'ls'
 
-Run some Pyton
+Run some Python
 1. Enter 'idle HelloPiThon.py &'
 2. Run by clicking the 'Run' menu then 'Run Module'
 
 
 
-
- - Sign up for Github account
-Signing up to Github
-Go to github.com and sign up.
+Sign up for Github account at github.com
