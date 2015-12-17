@@ -68,6 +68,7 @@ def RotateAndBlit(screen, image, position, rotationAngle):
     screen.blit(imageRotated, positionAdjusted)
     
 
+
 #Main Game loop.  The game runs for ever.
 while True:
     #Fill screen with black
@@ -79,13 +80,6 @@ while True:
     rotationAngle = AngleBetween(mousePos, playerPos, playerOffset)
     #Rotate image
     RotateAndBlit(screen, Player, playerPos, rotationAngle)
-    playerRotated = pygame.transform.rotate(Player, InDegrees(rotationAngle))
-    #Adjust the player position so the image is drawn in a consistent location
-    rotatedRect = playerRotated.get_rect()
-    playerPosAdjusted = [playerPos[X] - rotatedRect.width/2.0, playerPos[Y] - rotatedRect.height/2.0]
-    #Place the rotated player image on screen
-
-    screen.blit(playerRotated, playerPosAdjusted)
 
     ##Update each arrows position and place a rotated arrow image on the screen
     index = 0
