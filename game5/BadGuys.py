@@ -28,7 +28,7 @@ class BadGuys:
     def __init__(self, imageDirectory, spawnDelay):
         self.Images = []
         for i in range(0,3):
-            image = pygame.image.load(imageDirectory + "/badguy" + str(i) + ".png")
+            image = pygame.image.load(imageDirectory + "/badguy" + str(i) + ".png").convert_alpha()
             self.Images.append(pygame.transform.flip(image, True, False))
         self.SpawnDelay = spawnDelay
         self.TimeToSpawn = 10

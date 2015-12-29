@@ -4,7 +4,7 @@ from MathFunctions import *
 
 class Player:
     def __init__ (self, screen, imageLocation):
-        self.Image = pygame.image.load(imageLocation)
+        self.Image = pygame.image.load(imageLocation).convert_alpha()
         self.Width = self.Image.get_width()
         self.Height = self.Image.get_height()
         self.Center = [self.Width/2.0, self.Height/2.0]

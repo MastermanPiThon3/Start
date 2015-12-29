@@ -29,7 +29,7 @@ class Arrow:
 
 class Arrows:
     def __init__ (self, imageLocation):
-        self.Image = pygame.image.load(imageLocation)
+        self.Image = pygame.image.load(imageLocation).convert_alpha()
         self.Active = []
         self.Speed = 10;
         self.Padding = self.Image.get_width()/5
