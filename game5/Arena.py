@@ -6,10 +6,13 @@ from Stats import *
 
 class Arena:
     def __init__(self, width, height, color):
-        self.Display = pygame.display.set_mode((width, height))
+        displayInfo = pygame.display.Info()
+        self.FullScreenSize = [displayInfo.current_w, displayInfo.current_h]
         self.Width = width
         self.Height = height
+        self.WindowedSize = [self.Width, self.Height]
         self.Color = color
+        self.MakeWindowed()
         self.Status = Stats((0,0,0), color)
 
     def Clear(self, player):
@@ -46,9 +49,24 @@ class Arena:
         self.Display.fill((0,0,0))
         self.Display.blit(endImage, endPosition)
         pygame.display.flip()
+
+    def MakeFullScreen(self):
+        self.Display = pygame.display.set_mode(self.FullScreenSize, pygame.FULLSCREEN)
+        self.Width = self.Display.get_width()
+        self.Height = self.Display.get_height()
         
+    def MakeWindowed(self):
+        self.Display = pygame.display.set_mode(self.WindowedSize)
+        self.Width = self.Display.get_width()
+        self.Height = self.Display.get_height()
 
 
+    def Update(self, keys, player):
+        if keys[K_f] > 0:
+            self.MakeFullScreen()
 
-        
+        if keys[K_ESCAPE] > 0:
+            self.MakeWindowed()
+            player.RepositionOnScreenSizeChange(self.Width, self.Height)
+
             

@@ -8,6 +8,8 @@ class Stats:
         self.Kills = 0
         self.Font = pygame.font.Font(None, 24)
         self.StartTime = pygame.time.get_ticks()
+        self.LastUpdate = pygame.time.get_ticks()
+        self.MaxFPS = 60
         self.FontColor = fontColor
         self.BgColor = backgroundColor
 
@@ -32,4 +34,15 @@ class Stats:
         timePosition = [arena.Width - timeImage.get_width() - 10, healthPosition[1] + healthImage.get_height() + 5]
         arena.Blit(timeImage, timePosition)
         killsPosition = [arena.Width - killsImage.get_width() -10, timePosition[1] + timeImage.get_height() + 5]
-        arena.Blit(killsImage, killsPosition)   
+        arena.Blit(killsImage, killsPosition)
+
+
+    def FrameLimiter(self):
+        msMinPerFrame = 1000 / self.MaxFPS
+        msDelay = self.LastUpdate - pygame.time.get_ticks()
+        if msDelay < msMinPerFrame:
+            pygame.time.wait(msMinPerFrame - msDelay)
+
+        self.LastUpdate = pygame.time.get_ticks()
+
+        

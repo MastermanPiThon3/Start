@@ -27,7 +27,7 @@ arrows = Arrows("../images/arrow.png")
 badGuys = BadGuys("../images", 42)
 #Holds the current direction(s) the player is moving.  Set to no movement
 #       left-a right-d up-w  down-s
-keys = {K_a:0, K_d:0, K_w:0, K_s:0, }
+keys = {K_a:0, K_d:0, K_w:0, K_s:0, K_f:0, K_ESCAPE:0 }
 
 arena.StartGame()
 
@@ -37,6 +37,7 @@ while not arena.Status.TimeUp() and player.Alive() and gameActive:
     player.Move(arena, keys)
     arrows.Move(arena)
     badGuys.MoveAttack(arena, player, arrows)
+    arena.Update(keys, player)
     #Fill arena (surface)
     arena.Clear(player)
     player.Blit(arena, pygame.mouse.get_pos())
@@ -59,10 +60,16 @@ while not arena.Status.TimeUp() and player.Alive() and gameActive:
             pygame.quit()
             gameActive = False
 
+    #limit game rate
+    arena.Status.FrameLimiter()
+    
+
 
 arena.EndGame(player)
-while gameActive:
+while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             
+        if event.type == pygame.KEYDOWN and (event.key == K_q or event.key == K_ESCAPE):
+            pygame.quit()

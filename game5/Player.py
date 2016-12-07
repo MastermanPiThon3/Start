@@ -11,8 +11,8 @@ class Player:
         self.Padding = self.Width/5
         self.Speed = 5
         self.Position = [40, 220]
-        self.xMargin = Range(self.Width/2, screen.Width - self.Width/2)
-        self.yMargin = Range(self.Height/2, screen.Height - self.Height/2)
+        self.xMargin = self.Width/2
+        self.yMargin = self.Height/2
         self.Health = 100
         self.Damage = 1
 
@@ -20,10 +20,16 @@ class Player:
         #Update players position
         xUpdated = keys[K_d] - keys[K_a] + self.Position[X]
         yUpdated = keys[K_s] - keys[K_w] + self.Position[Y]
-        if self.xMargin.Min <= xUpdated <= self.xMargin.Max:
+        if self.xMargin <= xUpdated <= arena.Display.get_width() - self.xMargin:
             self.Position[X] = xUpdated
-        if self.yMargin.Min <= yUpdated <= self.yMargin.Max:
+        if self.yMargin <= yUpdated <= arena.Display.get_height() - self.yMargin:
             self.Position[Y] = yUpdated
+
+    def RepositionOnScreenSizeChange(self, width, height):
+        if self.Position[X] >= width - self.xMargin:
+            self.Position[X] = width - self.xMargin
+        if self.Position[Y] >= height - self.yMargin:
+            self.Position[Y] = height - self.yMargin
 
     def Blit(self, arena, mousePosition):
         #Determine angle between player position and the mouse position
